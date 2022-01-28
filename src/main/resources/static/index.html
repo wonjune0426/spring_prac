@@ -291,7 +291,7 @@
         //작성완료 버튼 누를시
         function writecomplete() {
             let title = $('#title').val();
-            let contents = $('#contents').val();
+            let contents = $('#contents').val().replace(/\n/g, "<br>");
             let writer = $('#writer').val();
             if (checkValid(title, contents, writer) == false) {
                 return;
@@ -323,6 +323,7 @@
         function detail(title, writer, contents,createdAt) {
             $('#writebutton').hide();
             $('#cards-box').hide();
+            contents=contents.replaceAll("<br>", "\r\n");
             let tempHtml = `<div id="detail_modal">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">제목</label>
